@@ -1,5 +1,5 @@
-const STANDINGS_GID = "0"; // Replace with the GID of the Standings sheet if not 0
-const SHEET_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbuqGhtyNYck2VWGreRLHBjzX3dDJivYbAT999MtrPFQOjfP-GYZ_izBODqIrveDZcDO987PlJftMS/pub?output=csv&gid=1124784776";
+const STANDINGS_GID = "1124784776"; // Replace with the GID of the Standings sheet if not 0
+const SHEET_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJNRN4O9DQ_YAtReDZzF_KFaMVkQFdqs3f5iTYaD9LNUrVQeVnv1zS0u5nvjlZzUgwLdS2wC48PuNs/pub?output=csv";
 
 async function loadCSV(url) {
   const response = await fetch(url);

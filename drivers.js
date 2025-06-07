@@ -1,5 +1,5 @@
-const DRIVERS_GID = "1927281734"; // Replace with the GID for Drivers Championship sheet
-const SHEET_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbuqGhtyNYck2VWGreRLHBjzX3dDJivYbAT999MtrPFQOjfP-GYZ_izBODqIrveDZcDO987PlJftMS/pub?output=csv&gid=1819431125";
+const DRIVERS_GID = "1819431125"; // Replace with the GID for Drivers Championship sheet
+const SHEET_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJNRN4O9DQ_YAtReDZzF_KFaMVkQFdqs3f5iTYaD9LNUrVQeVnv1zS0u5nvjlZzUgwLdS2wC48PuNs/pub?output=csv";
 
 async function loadCSV(url) {
   const response = await fetch(url);

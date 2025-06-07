@@ -1,29 +1,167 @@
+/* General Layout */
 body {
-    font-family: sans-serif;
-    background: #1e1e2f;
-    color: #f0f0f0;
-    padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  background-color: #15151e;       /* Background: #15151e */
+  color: #fefefe;                  /* Font white: #fefefe */
+  margin: 0;
+  padding: 2rem;
+}
+
+/* Navigation */
+nav {
+  margin-bottom: 2rem;
+}
+nav a {
+  margin-right: 1.5rem;
+  color: #6a6a70;                  /* Font grey: #6a6a70 */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+nav a:hover {
+  color: #fefefe;
+}
+
+/* Page Title */
+h1 {
+  text-align: center;
+  color: #efbf04;                  /* Gold for first: #efbf04 */
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* Subheaders (Season 1, RACES CALENDAR, POINTS) */
+.subheader {
+  color: #6a6a70;                  /* Font grey: #6a6a70 */
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+}
+
+/* Standings Page – 3-column Grid */
+.standings-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr; /* Left large, middle slim, right slim */
+  gap: 1.5rem;
+}
+
+/* Section Title Override (e.g. “Standings”) */
+.section-title {
+  grid-column: 1 / -1;             /* Span all columns */
+  text-align: center;
+  color: #efbf04;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* Table Basics */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #15151e;
+  margin-bottom: 2rem;
+  table-layout: auto;
+  font-size: 0.95rem;
+}
+
+/* Table Headers */
+th {
+  background-color: #212129;       /* Grey row highlights: #212129 */
+  color: #fefefe;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  border-bottom: 2px solid #212129;
+}
+
+/* Table Cells */
+td {
+  background-color: #15151e;
+  color: #fefefe;
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #212129;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Alternate Row Highlight */
+tr:nth-child(even) td {
+  background-color: #212129;
+}
+
+/* Hover Highlight */
+tr:hover td {
+  background-color: #212129;
+}
+
+/* Calendar Area Dotted Lines */
+.calendar-table th,
+.calendar-table td {
+  border-bottom: 1px dotted #6a6a70; /* Dotted theme only here */
+}
+
+/* Podium Colours */
+td.podium-1 {
+  background-color: #efbf04;       /* Gold for first */
+  color: #fefefe;
+  font-weight: bold;
+}
+td.podium-2 {
+  background-color: #6fa8dc;       /* Silver for second */
+  color: #fefefe;
+  font-weight: bold;
+}
+td.podium-3 {
+  background-color: #d08d4c;       /* Bronze for third */
+  color: #fefefe;
+  font-weight: bold;
+}
+
+/* Movement Arrows */
+.movement-up {
+  color: #00c86f;                  /* Green */
+  font-weight: bold;
+}
+.movement-down {
+  color: #f44336;                  /* Red */
+  font-weight: bold;
+}
+
+/* Rotate Date Header (Drivers Championship) */
+.rotate-header {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  font-size: 0.75rem;
+  color: #6a6a70;
+  padding: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .standings-grid {
+    display: block;
   }
-  
-  h1 {
-    text-align: center;
-    color: #f7b733;
+  table, thead, tbody, th, td, tr {
+    display: block;
   }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 2rem;
+  td {
+    text-align: left;
+    padding-left: 50%;
+    position: relative;
   }
-  
-  th, td {
-    border: 1px solid #444;
-    padding: 0.75rem;
-    text-align: center;
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.5rem;
+    width: 45%;
+    font-weight: bold;
+    color: #6a6a70;
   }
-  
-  th {
-    background: #f7b733;
-    color: #1e1e2f;
-  }
-  
+}
