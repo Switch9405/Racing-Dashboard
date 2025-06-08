@@ -112,7 +112,8 @@ nav a.active {
   border-radius: 8px;
   background: var(--card);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--border);
+  border: none !important;
+
 }
 
 table {
@@ -142,14 +143,16 @@ th {
 td {
   color: var(--text);
   font-weight: 500;
+  border-bottom: none !important;
+  border-left: none !important;
 }
 
 tbody tr:last-child td {
   border-bottom: none;
 }
 
-tr:nth-child(even) td {
-  background: rgba(255, 255, 255, 0.03);
+tbody tr td {
+  background: var(--card);
 }
 
 tr:hover td {
@@ -161,16 +164,39 @@ tr:hover td {
   position: relative;
 }
 
+.podium-2 {
+  background: linear-gradient(to right, rgba(192, 192, 192, 0.15), var(--card)) !important;
+  position: relative;
+}
+
+.podium-3 {
+  background: linear-gradient(to right, rgba(205, 127, 50, 0.15), var(--card)) !important;
+  position: relative;
+}
+
+.race-point.podium-points-1 {
+  background: rgba(255, 215, 0, 0.60);
+  color: var(--bg);
+  font-weight: bold;
+}
+
+.race-point.podium-points-2 {
+  background: rgba(192, 192, 192, 0.75);
+  color: var(--bg);
+  font-weight: bold;
+}
+
+.race-point.podium-points-3 {
+  background: rgba(205, 127, 50, 0.55);
+  color: var(--bg);
+  font-weight: bold;
+}
+
 .podium-1::before {
   content: "🥇";
   position: absolute;
   left: 0.7rem;
   filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
-}
-
-.podium-2 {
-  background: linear-gradient(to right, rgba(192, 192, 192, 0.15), var(--card)) !important;
-  position: relative;
 }
 
 .podium-2::before {
@@ -180,10 +206,6 @@ tr:hover td {
   filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
 }
 
-.podium-3 {
-  background: linear-gradient(to right, rgba(205, 127, 50, 0.15), var(--card)) !important;
-  position: relative;
-}
 
 .podium-3::before {
   content: "🥉";
@@ -212,30 +234,15 @@ tr:hover td {
   background: rgba(255, 82, 82, 0.15);
 }
 
-
 .race-point {
   display: inline-block;
   width: 24px;
   height: 24px;
   line-height: 24px;
-  border-radius: 50%;
+  border-radius: 25%;
   font-weight: bold;
-  font-size: 0.85rem;
-}
-
-.race-point.podium-1 {
-  background: var(--gold);
-  color: #000;
-}
-
-.race-point.podium-2 {
-  background: var(--silver);
-  color: #000;
-}
-
-.race-point.podium-3 {
-  background: var(--bronze);
-  color: #000;
+  font-size: 1rem;
+  
 }
 
 .loading {
@@ -349,10 +356,10 @@ tr:hover td {
   }
   
   .race-point {
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
-    font-size: 0.8rem;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 0.85rem;
   }
 }
 
@@ -362,3 +369,66 @@ tr:hover td {
   min-width: 20px;
   padding: 0;
 }
+
+.fl-highlight {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 25%;
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--fastestlap);
+}
+
+th:nth-last-child(2), td:nth-last-child(2),
+th:last-child, td:last-child {
+  width: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+.divider-cell {
+  background-color: var(--bg);
+  width: 4px;
+  min-width: 4px;
+  max-width: 4px;
+  padding: 0;
+}
+
+th.divider-cell {
+  background-color: var(--header);
+  border: none;
+  pointer-events: none;
+}
+
+.spacer-row td {
+  background: var(--bg);
+  height: 10px;
+  padding: 0;
+  border: none;
+}
+
+.spacer-row:last-child td {
+  display: none;
+}
+
+/* Make the Pos column narrower for standings tables */
+#team-standings th:first-child,
+#team-standings td:first-child,
+#drivers-standings th:first-child,
+#drivers-standings td:first-child {
+  width: 45px;
+  max-width: 45px;
+  min-width: 45px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+tr:hover td {
+  background: rgba(74, 111, 255, 0.08) !important;
+}
+
+

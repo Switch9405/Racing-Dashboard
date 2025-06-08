@@ -17,8 +17,11 @@ async function loadStandingsData() {
     const rosterBody = document.querySelector('#team-rosters tbody');
     
     teamBody.innerHTML = '';
+    teamBody.innerHTML += '<tr class="spacer-row"><td colspan="100%"></td></tr>';
     driverBody.innerHTML = '';
+    driverBody.innerHTML += '<tr class="spacer-row"><td colspan="100%"></td></tr>';
     rosterBody.innerHTML = '';
+    rosterBody.innerHTML += '<tr class="spacer-row"><td colspan="100%"></td></tr>';
     
     const teamMap = new Map();
     const teamData = [];
@@ -77,6 +80,10 @@ async function loadStandingsData() {
         <td><strong>${team.points}</strong></td>
       `;
       teamBody.appendChild(row);
+      const spacer = document.createElement('tr');
+      spacer.classList.add('spacer-row');
+      spacer.innerHTML = `<td colspan="3"></td>`;
+      teamBody.appendChild(spacer);
     });
     
     // Render driver standings
@@ -90,27 +97,41 @@ async function loadStandingsData() {
         <td><strong>${driver.points}</strong></td>
       `;
       driverBody.appendChild(row);
+      const spacer = document.createElement('tr');
+      spacer.classList.add('spacer-row');
+      spacer.innerHTML = `<td colspan="3"></td>`;
+      driverBody.appendChild(spacer);
+
     });
     
-    // Render team rosters
-    teamMap.forEach((drivers, team) => {
-      if (!team || drivers.length === 0) return;
-      
-      const row = document.createElement('tr');
-      
-      row.innerHTML = `
-        <td><strong>${team}</strong></td>
-        <td class="team-roster">
-          ${drivers.map((driver, index) => `
-            <div class="driver-item">
-              <span class="driver-number">${index + 1}</span>
-              <span>${driver}</span>
-            </div>
-          `).join('')}
-        </td>
-      `;
-      rosterBody.appendChild(row);
-    });
+// Render team rosters in input order
+const renderedTeams = new Set();
+for (let i = 1; i < rows.length; i++) {
+  const cells = rows[i].split(',').map(escapeHTML);
+  if (cells.length < 11) continue;
+
+  const team = cells[8];
+  const driver1 = cells[9];
+  const driver2 = cells[10];
+
+  if (!team || renderedTeams.has(team)) continue;
+  renderedTeams.add(team);
+
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td><strong>${team}</strong></td>
+    <td class="team-roster">
+      <div class="driver-item"><span class="driver-number">1</span><span>${driver1}</span></div>
+      <div class="driver-item"><span class="driver-number">2</span><span>${driver2}</span></div>
+    </td>
+  `;
+  rosterBody.appendChild(row);
+
+  const spacer = document.createElement('tr');
+  spacer.classList.add('spacer-row');
+  spacer.innerHTML = `<td colspan="2"></td>`;
+  rosterBody.appendChild(spacer);
+}
     
   } catch (error) {
     console.error('Failed to load standings data:', error);

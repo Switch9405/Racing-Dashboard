@@ -3,10 +3,6 @@ const calendarUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJNRN4O9DQ
 const escapeHTML = str => str.replace(/[&<>"']/g,
   ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
 
-function createVerticalDate(dateText) {
-  return `<div style="writing-mode: vertical-rl; transform: rotate(180deg); font-size: 12px;">${dateText}</div>`;
-}
-
 async function loadCalendarData() {
   try {
     const response = await fetch(calendarUrl);
@@ -18,6 +14,7 @@ async function loadCalendarData() {
 
     const calendarTable = document.querySelector('#calendar-table tbody');
     calendarTable.innerHTML = '';
+    calendarTable.innerHTML += '<tr class="spacer-row"><td colspan="100%"></td></tr>';
 
     const events = [];
     let currentEvent = null;
@@ -44,7 +41,7 @@ async function loadCalendarData() {
         if (idx === 0) {
           tr.innerHTML = `
             <td rowspan="${event.races.length}">${event.event}</td>
-            <td rowspan="${event.races.length}" class="vertical-date">${createVerticalDate(event.date)}</td>
+            <td rowspan="${event.races.length}">${event.date}</td>
             <td>${race.race}</td>
             <td>${race.track}</td>
             <td>${race.layout}</td>
@@ -62,6 +59,10 @@ async function loadCalendarData() {
         }
         calendarTable.appendChild(tr);
       });
+        const spacer = document.createElement('tr');
+        spacer.classList.add('spacer-row');
+        spacer.innerHTML = `<td colspan="7"></td>`;
+        calendarTable.appendChild(spacer);
     });
 
   } catch (error) {

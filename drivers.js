@@ -17,6 +17,7 @@ async function loadDriversData() {
     const pointsThead = pointsTable.querySelector('thead tr');
 
     pointsTbody.innerHTML = '';
+    pointsTbody.innerHTML += '<tr class="spacer-row"><td colspan="100%"></td></tr>';
 
     const driverData = [];
     const racePoints = Array(10).fill().map(() => []);
@@ -60,7 +61,10 @@ async function loadDriversData() {
     for (let i = 0; i < 10; i++) {
       pointsThead.innerHTML += `<th>${i + 1}</th>`;
     }
-    pointsThead.innerHTML += `<th>FL</th><th>PP</th>`;
+    pointsThead.innerHTML += `
+    <th class="divider-cell"></th>
+    <th class="fl-header">Fastest Laps</th>
+    <th class="pp-header">Pole Positions</th>`;  
 
     // Driver rows
     driverData.forEach(driver => {
@@ -76,7 +80,9 @@ async function loadDriversData() {
       }
 
       const ptsDisplay = parseInt(driver.pts) > 0 ? driver.pts : '-';
-      const flDisplay = parseInt(driver.fl) > 0 ? driver.fl : '-';
+      const flDisplay = parseInt(driver.fl) > 0
+      ? `<span class="fl-highlight">${driver.fl}</span>`
+      : '-';
       const ppDisplay = parseInt(driver.pp) > 0 ? driver.pp : '-';
 
       let rowHTML = `
@@ -93,9 +99,9 @@ async function loadDriversData() {
         let className = '';
 
         if (points > 0) {
-          if (points === gold) className = 'podium-1';
-          else if (points === silver) className = 'podium-2';
-          else if (points === bronze) className = 'podium-3';
+          if (points === gold) className = 'podium-points-1';
+          else if (points === silver) className = 'podium-points-2';
+          else if (points === bronze) className = 'podium-points-3';
         }
 
         rowHTML += className
@@ -103,9 +109,13 @@ async function loadDriversData() {
           : `<td>${display}</td>`;
       });
 
-      rowHTML += `<td>${flDisplay}</td><td>${ppDisplay}</td>`;
+      rowHTML += `<td class="divider-cell"></td><td class="fl-cell">${flDisplay}</td><td class="pp-cell">${ppDisplay}</td>`;
       tr.innerHTML = rowHTML;
       pointsTbody.appendChild(tr);
+      const spacer = document.createElement('tr');
+      spacer.classList.add('spacer-row');
+      spacer.innerHTML = `<td colspan="100%"></td>`;
+      pointsTbody.appendChild(spacer);
     });
 
   } catch (error) {
