@@ -1,7 +1,9 @@
 const calendarUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJNRN4O9DQ_YAtReDZzF_KFaMVkQFdqs3f5iTYaD9LNUrVQeVnv1zS0u5nvjlZzUgwLdS2wC48PuNs/pub?output=csv&gid=163325457";
 
-const escapeHTML = str => str.replace(/[&<>"']/g,
-  ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]);
+const escapeHTML = str =>
+  str.replace(/[&<>"']/g, ch =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]
+  );
 
 async function loadCalendarData() {
   try {
@@ -10,63 +12,79 @@ async function loadCalendarData() {
 
     const csv = await response.text();
     const rows = csv.split('\n').filter(r => r.trim() !== '');
-    if (rows.length < 2) throw new Error('Not enough data in CSV');
+    const headers = rows[0].split(',').map(h => h.trim().toUpperCase());
+
+    const eventIndex = headers.indexOf('EVENT');
+    const dateIndex = headers.indexOf('DATE');
+    const raceIndex = headers.indexOf('RACE');
+    const trackIndex = headers.indexOf('TRACK');
+    const layoutIndex = headers.indexOf('LAYOUT');
+    const formatIndex = headers.indexOf('FORMAT');
+    const timeIndex = headers.indexOf('TIME');
 
     const calendarTable = document.querySelector('#calendar-table tbody');
     calendarTable.innerHTML = '';
     calendarTable.innerHTML += '<tr class="spacer-row"><td colspan="100%"></td></tr>';
 
-    const events = [];
-    let currentEvent = null;
-
-    for (let i = 1; i <= 10; i++) {
+    // Group races by EVENT
+    const eventsMap = {};
+    for (let i = 1; i < rows.length; i++) {
       const cols = rows[i].split(',').map(escapeHTML);
-      if (cols.length < 7) continue;
+      const event = cols[eventIndex];
+      const date = cols[dateIndex];
+      const race = cols[raceIndex];
+      const track = cols[trackIndex];
+      const layout = cols[layoutIndex];
+      const format = cols[formatIndex];
+      const time = cols[timeIndex];
 
-      const [event, date, race, track, layout, format, time] = cols;
+      // Skip rows without valid race data
+      if (!event || !race || !track || !layout) continue;
 
-      if (event) {
-        currentEvent = { event, date, races: [] };
-        events.push(currentEvent);
+      if (!eventsMap[event]) {
+        eventsMap[event] = {
+          date,
+          races: [],
+        };
       }
 
-      if (currentEvent) {
-        currentEvent.races.push({ race, track, layout, format, time });
-      }
+      eventsMap[event].races.push({ race, track, layout, format, time });
     }
 
-    events.forEach(event => {
-      event.races.forEach((race, idx) => {
+    // Render events and their races
+    Object.entries(eventsMap).forEach(([eventNumber, { date, races }]) => {
+      // Header row for the event
+      const headerRow = document.createElement('tr');
+      headerRow.classList.add('event-header-row');
+      headerRow.innerHTML = `
+        <td colspan="5"><strong>Event ${eventNumber}</strong> — <span class="event-date">${date}</span></td>
+      `;
+      calendarTable.appendChild(headerRow);
+
+      // Add race rows
+      races.forEach(race => {
         const tr = document.createElement('tr');
-        if (idx === 0) {
-          tr.innerHTML = `
-            <td rowspan="${event.races.length}">${event.event}</td>
-            <td rowspan="${event.races.length}">${event.date}</td>
-            <td>${race.race}</td>
-            <td>${race.track}</td>
-            <td>${race.layout}</td>
-            <td>${race.format}</td>
-            <td>${race.time}</td>
-          `;
-        } else {
-          tr.innerHTML = `
-            <td>${race.race}</td>
-            <td>${race.track}</td>
-            <td>${race.layout}</td>
-            <td>${race.format}</td>
-            <td>${race.time}</td>
-          `;
-        }
+        tr.innerHTML = `
+          <td>${race.race}</td>
+          <td>${race.track}</td>
+          <td>${race.layout}</td>
+          <td>${race.format}</td>
+          <td>${race.time}</td>
+        `;
         calendarTable.appendChild(tr);
       });
-        const spacer = document.createElement('tr');
-        spacer.classList.add('spacer-row');
-        spacer.innerHTML = `<td colspan="7"></td>`;
-        calendarTable.appendChild(spacer);
+
+      // Spacer after each event
+      const spacer = document.createElement('tr');
+      spacer.classList.add('spacer-row');
+      spacer.innerHTML = `<td colspan="5"></td>`;
+      calendarTable.appendChild(spacer);
     });
 
   } catch (error) {
     console.error('Failed to load calendar data:', error);
+    const calendarTable = document.querySelector('#calendar-table tbody');
+    calendarTable.innerHTML = '<tr><td colspan="5" class="error">Failed to load calendar.</td></tr>';
   }
 }
 
