@@ -1,167 +1,364 @@
-/* General Layout */
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #15151e;       /* Background: #15151e */
-  color: #fefefe;                  /* Font white: #fefefe */
+:root {
+  --bg: #0f1117;
+  --card: #1a1d28;
+  --header: #252a3a;
+  --text: #e0e0ff;
+  --gold: #ffd700;
+  --silver: #c0c0c0;
+  --bronze: #cd7f32;
+  --accent: #4a6fff;
+  --positive: #00c86f;
+  --negative: #ff5252;
+  --border: #2d3246;
+  --fastestlap: #8064a2;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  padding: 2rem;
+  padding: 0;
 }
 
-/* Navigation */
-nav {
-  margin-bottom: 2rem;
-}
-nav a {
-  margin-right: 1.5rem;
-  color: #6a6a70;                  /* Font grey: #6a6a70 */
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-}
-nav a:hover {
-  color: #fefefe;
+body {
+  padding: 1.5rem;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  font-size: 14px;
 }
 
-/* Page Title */
+.page-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 h1 {
   text-align: center;
-  color: #efbf04;                  /* Gold for first: #efbf04 */
-  font-size: 2.4rem;
-  margin-bottom: 1.5rem;
+  color: var(--gold);
+  font-size: 2.2rem;
   text-transform: uppercase;
+  margin: 0.5rem 0 1.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
 }
 
-/* Subheaders (Season 1, RACES CALENDAR, POINTS) */
 .subheader {
-  color: #6a6a70;                  /* Font grey: #6a6a70 */
-  text-transform: uppercase;
   font-size: 0.9rem;
-  padding: 0.5rem 0;
+  color: #8a94b3;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
-/* Standings Page – 3-column Grid */
-.standings-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr; /* Left large, middle slim, right slim */
-  gap: 1.5rem;
-}
-
-/* Section Title Override (e.g. “Standings”) */
 .section-title {
-  grid-column: 1 / -1;             /* Span all columns */
-  text-align: center;
-  color: #efbf04;
   font-size: 1.3rem;
   font-weight: 700;
+  color: var(--accent);
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
 }
 
-/* Table Basics */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+nav a {
+  color: #8a94b3;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+nav a:hover {
+  color: var(--text);
+  background: rgba(74, 111, 255, 0.15);
+}
+
+nav a.active {
+  color: white;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(74, 111, 255, 0.5);
+}
+
+.grid-container {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.standings-grid {
+  grid-template-columns: 1.8fr 2fr 1.2fr;
+}
+
+.drivers-grid {
+  grid-template-columns: 1fr 1.5fr;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+}
+
 table {
   width: 100%;
-  border-collapse: collapse;
-  background-color: #15151e;
-  margin-bottom: 2rem;
-  table-layout: auto;
-  font-size: 0.95rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.9rem;
 }
 
-/* Table Headers */
+th, td {
+  padding: 0.7rem 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
 th {
-  background-color: #212129;       /* Grey row highlights: #212129 */
-  color: #fefefe;
+  background: var(--header);
+  color: #aab4e0;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  padding: 0.75rem 0.5rem;
-  text-align: center;
-  border-bottom: 2px solid #212129;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
 }
 
-/* Table Cells */
 td {
-  background-color: #15151e;
-  color: #fefefe;
-  padding: 0.6rem 0.5rem;
-  border-bottom: 1px solid #212129;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: var(--text);
+  font-weight: 500;
 }
 
-/* Alternate Row Highlight */
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
 tr:nth-child(even) td {
-  background-color: #212129;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-/* Hover Highlight */
 tr:hover td {
-  background-color: #212129;
+  background: rgba(74, 111, 255, 0.08);
 }
 
-/* Calendar Area Dotted Lines */
-.calendar-table th,
-.calendar-table td {
-  border-bottom: 1px dotted #6a6a70; /* Dotted theme only here */
+.podium-1 {
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.15), var(--card)) !important;
+  position: relative;
 }
 
-/* Podium Colours */
-td.podium-1 {
-  background-color: #efbf04;       /* Gold for first */
-  color: #fefefe;
-  font-weight: bold;
-}
-td.podium-2 {
-  background-color: #6fa8dc;       /* Silver for second */
-  color: #fefefe;
-  font-weight: bold;
-}
-td.podium-3 {
-  background-color: #d08d4c;       /* Bronze for third */
-  color: #fefefe;
-  font-weight: bold;
+.podium-1::before {
+  content: "🥇";
+  position: absolute;
+  left: 0.7rem;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
 }
 
-/* Movement Arrows */
+.podium-2 {
+  background: linear-gradient(to right, rgba(192, 192, 192, 0.15), var(--card)) !important;
+  position: relative;
+}
+
+.podium-2::before {
+  content: "🥈";
+  position: absolute;
+  left: 0.7rem;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+}
+
+.podium-3 {
+  background: linear-gradient(to right, rgba(205, 127, 50, 0.15), var(--card)) !important;
+  position: relative;
+}
+
+.podium-3::before {
+  content: "🥉";
+  position: absolute;
+  left: 0.7rem;
+  filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+}
+
+.movement {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 0.85em;
+  font-weight: bold;
+  padding: 0.15rem 0.4rem;
+  border-radius: 10px;
+}
+
 .movement-up {
-  color: #00c86f;                  /* Green */
-  font-weight: bold;
+  color: var(--positive);
+  background: rgba(0, 200, 111, 0.15);
 }
+
+
 .movement-down {
-  color: #f44336;                  /* Red */
+  color: var(--negative);
+  background: rgba(255, 82, 82, 0.15);
+}
+
+
+.race-point {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 50%;
   font-weight: bold;
+  font-size: 0.85rem;
 }
 
-/* Rotate Date Header (Drivers Championship) */
-.rotate-header {
-  writing-mode: vertical-lr;
-  transform: rotate(180deg);
-  font-size: 0.75rem;
-  color: #6a6a70;
-  padding: 0.5rem;
+.race-point.podium-1 {
+  background: var(--gold);
+  color: #000;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+.race-point.podium-2 {
+  background: var(--silver);
+  color: #000;
+}
+
+.race-point.podium-3 {
+  background: var(--bronze);
+  color: #000;
+}
+
+.loading {
+  text-align: center;
+  padding: 2.5rem;
+  color: #8a94b3;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.error {
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--negative);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.team-roster {
+  text-align: left;
+  padding: 0.5rem 1rem;
+}
+
+.driver-item {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.driver-item:last-child {
+  border-bottom: none;
+}
+
+.driver-number {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  background: var(--header);
+  border-radius: 50%;
+  margin-right: 0.8rem;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+@media (max-width: 1024px) {
   .standings-grid {
-    display: block;
+    grid-template-columns: 1fr 1fr;
   }
-  table, thead, tbody, th, td, tr {
-    display: block;
+  
+  .standings-grid > div:last-child {
+    grid-column: span 2;
   }
-  td {
-    text-align: left;
-    padding-left: 50%;
-    position: relative;
+  
+  .drivers-grid {
+    grid-template-columns: 1fr;
   }
-  td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0.5rem;
-    width: 45%;
-    font-weight: bold;
-    color: #6a6a70;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
   }
+  
+  .standings-grid,
+  .drivers-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .standings-grid > div:last-child {
+    grid-column: span 1;
+  }
+  
+  nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .table-container {
+    border-radius: 6px;
+  }
+  
+  table {
+    min-width: 300px;
+  }
+  
+  th, td {
+    padding: 0.6rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  th, td {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.1rem;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  .race-point {
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    font-size: 0.8rem;
+  }
+}
+
+.vertical-date {
+  text-align: center;
+  vertical-align: middle;
+  min-width: 20px;
+  padding: 0;
 }

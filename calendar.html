@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Racing League - Drivers Championship</title>
+  <title>Racing League - Calendar</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,34 +13,35 @@
   <div class="page-container">
     <nav>
       <a href="index.html">Standings</a>
-      <a href="drivers.html" class="active">Drivers Championship</a>
-      <a href="calendar.html">Event Calendar</a>
+      <a href="drivers.html">Drivers Championship</a>
+      <a href="calendar.html" class="active">Event Calendar</a>
     </nav>
 
-    <h1>Drivers Championship</h1>
+    <h1>Event Calendar</h1>
     <div class="section-title">Season 1</div>
+
     <div class="table-container">
-      <table id="points-table">
+      <table id="calendar-table">
         <thead>
           <tr>
-            <th>Pos</th>
-            <th>Driver</th>
-            <th class="move-header"></th>
-            <th>Pts</th>
-            <!-- Race columns inserted by JS -->
-            <th>FL</th>
-            <th>PP</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Race</th>
+            <th>Track</th>
+            <th>Layout</th>
+            <th>Format</th>
+            <th>Time</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td colspan="20" class="loading">Loading driver points...</td>
+            <td colspan="7" class="loading">Loading calendar data...</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <script src="drivers.js"></script>
+  <script src="calendar.js"></script>
 </body>
 </html>
