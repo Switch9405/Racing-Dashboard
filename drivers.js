@@ -28,11 +28,11 @@ async function loadDriversData() {
 
       const pos = cells[8] || '';
       const driver = cells[9] || '';
-      const movement = cells[10] || '';
-      const pts = cells[11] || '0';
-      const raceResults = cells.slice(12, 22);
-      const fl = cells[22] || '0';
-      const pp = cells[23] || '0';
+      const movement = cells[11] || '';
+      const pts = cells[12] || '0';
+      const raceResults = cells.slice(13, 22);
+      const fl = cells[23] || '0';
+      const pp = cells[24] || '0';
 
       driverData.push({ pos, driver, movement, pts, raceResults, fl, pp });
 
