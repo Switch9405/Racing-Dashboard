@@ -24,7 +24,7 @@ async function loadDriversData() {
 
     for (let i = 1; i < rows.length; i++) {
       const cells = rows[i].split(',').map(escapeHTML);
-      if (cells.length < 24) continue;
+      if (cells.length < 25) continue;
 
       const pos = cells[8] || '';
       const driver = cells[9] || '';
