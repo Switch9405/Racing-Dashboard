@@ -30,9 +30,9 @@ async function loadDriversData() {
       const driver = cells[9] || '';
       const movement = cells[11] || '';
       const pts = cells[12] || '0';
-      const raceResults = cells.slice(13, 22);
-      const fl = cells[23] || '0';
-      const pp = cells[24] || '0';
+      const raceResults = cells.slice(13, 23);
+      const fl = cells[24] || '0';
+      const pp = cells[25] || '0';
 
       driverData.push({ pos, driver, movement, pts, raceResults, fl, pp });
 
