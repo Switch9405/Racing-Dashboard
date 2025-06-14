@@ -1,12 +1,13 @@
 :root {
-  --bg: #0f1117;
+  --bg: #212129;
   --card: #1a1d28;
   --header: #252a3a;
   --text: #e0e0ff;
   --gold: #ffd700;
   --silver: #c0c0c0;
   --bronze: #cd7f32;
-  --accent: #4a6fff;
+  --accent: #00f5d0;
+  --accentbg: #00806c;
   --positive: #00c86f;
   --negative: #ff5252;
   --border: #2d3246;
@@ -35,12 +36,12 @@ body {
 
 h1 {
   text-align: center;
-  color: var(--gold);
+  color: var(--Text);
   font-size: 2.2rem;
   text-transform: uppercase;
   margin: 0.5rem 0 1.5rem;
   letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 4px var(--accentbg);
 }
 
 .subheader {
@@ -71,7 +72,7 @@ nav {
 }
 
 nav a {
-  color: #8a94b3;
+  color: var(--text);
   font-weight: 700;
   text-decoration: none;
   padding: 0.5rem 1.2rem;
@@ -88,9 +89,9 @@ nav a:hover {
 }
 
 nav a.active {
-  color: white;
+  color: var(--bg);
   background: var(--accent);
-  box-shadow: 0 0 10px rgba(74, 111, 255, 0.5);
+  box-shadow: 0 0 10px var(--accentbg);
 }
 
 .grid-container {
