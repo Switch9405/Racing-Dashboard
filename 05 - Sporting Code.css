@@ -129,6 +129,46 @@ ol.list-level-3 {
   text-align: right;
 }
 
+@media screen and (max-width: 768px) {
+  .rc-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .rc-heading,
+  .list-level-0 {
+    margin-left: 0;
+    font-size: 1.1rem;
+  }
+
+  .rc-body,
+  .list-level-1,
+  .list-level-2,
+  .list-level-3,
+  .list-level-4 {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .rc-table-table {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .rc-table-table th,
+  .rc-table-table td {
+    font-size: 0.75rem;
+    padding: 6px;
+  }
+
+  .rc-signature {
+    margin-left: 0;
+    text-align: right;
+  }
+}
+
+
 .rc-signature {
   margin-top: 20px;
   margin-left: 65%;
