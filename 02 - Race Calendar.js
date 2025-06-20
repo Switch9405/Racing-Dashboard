@@ -172,25 +172,20 @@ async function loadCalendarData() {
         if (raceNum === 9) {
           const flightClubRow = document.createElement('tr');
           flightClubRow.classList.add('rc-event-header-row');
-          flightClubRow.innerHTML = `<td colspan="100%"><strong>Flight Club</strong></td>`;
+          flightClubRow.innerHTML = `<td colspan="100%"><strong>[REDACTED]</strong></td>`;
           calendarTable.appendChild(flightClubRow);
 
-          const customHeaderRow = document.createElement('tr');
-          customHeaderRow.classList.add('rc-tableheading-width');
-
-          const headings = [
-            'Race', 'Track', 'Layout', 'Format', '', 'Car', '', 
-            'Arrow Drivers', 'Fastest Lap', 'Fastest Lap Time'
-          ];
-
-          headings.forEach(text => {
-            const th = document.createElement('th');
-            th.textContent = text;
-            th.style.borderBottom = '1px solid var(--grey)';
-            customHeaderRow.appendChild(th);
-          });
-
-          calendarTable.appendChild(customHeaderRow);
+          // Add redacted overlay row
+          const overlayRow = document.createElement('tr');
+          overlayRow.innerHTML = `
+            <td colspan="100%" style="position: relative; padding: 0; height: 300px;">
+              <div class="redacted-overlay">[REDACTED]</div>
+            </td>
+          `;
+          calendarTable.appendChild(overlayRow);
+          
+          // Skip creating the rest of the Flight Club content
+          return;
         }
       });
     });
