@@ -1,0 +1,18 @@
+#calendar-table {
+  display: none;
+}
+
+.grey-bottom-border {
+  border-bottom: 1px solid var(--grey);
+}
+
+.race-row {
+  font-size: 0.9rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 35px;
+}
+
+.race-row td:first-child {
+  text-align: center;
+}
