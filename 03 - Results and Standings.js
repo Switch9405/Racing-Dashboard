@@ -57,33 +57,35 @@ async function loadDriversData() {
         if (numPoints > 0) racePointsDrivers[idx].push(numPoints);
       });
 
-    // Team Data (only process rows 1 to 7)
-    if (i <= 7) {
-      const posT = cells[17];
-      const movementT = cells[19];
-      const teamName = cells[18];
-      const ptsT = cells[20];
-      const raceResultsT = cells.slice(21, 30);
-      const flT = cells[30];
-    
-      if (!teamName || teamName.trim() === '') return;
-    
-      // Ensure 9 race result values (fill with empty string if missing)
-      const paddedRaceResultsT = Array.from({ length: 9 }, (_, idx) => raceResultsT[idx] || '');
-    
-      teamData.push({
-        pos: posT || '-',
-        team: teamName,
-        movement: movementT || '0',
-        pts: ptsT || '0',
-        raceResults: paddedRaceResultsT,
-        fl: flT || '0'
-      });
-    
-      paddedRaceResultsT.forEach((points, idx) => {
-        const numPoints = parseInt(points) || 0;
-        if (numPoints > 0) racePointsTeams[idx].push(numPoints);
-      });
+      // Team Data (only process rows 1 to 7)
+      if (i <= 7) {
+        const posT = cells[17];
+        const movementT = cells[19];
+        const teamName = cells[18];
+        const ptsT = cells[20];
+        const raceResultsT = cells.slice(21, 30);
+        const flT = cells[30];
+
+        const hasValidData =
+          teamName && teamName.trim() !== '' &&
+          (parseInt(ptsT) || raceResultsT.some(p => parseInt(p)) || parseInt(flT));
+
+        if (!hasValidData) continue;
+
+        teamData.push({
+          pos: posT,
+          team: teamName,
+          movement: movementT,
+          pts: ptsT,
+          raceResults: raceResultsT,
+          fl: flT
+        });
+
+        raceResultsT.forEach((points, idx) => {
+          const numPoints = parseInt(points) || 0;
+          if (numPoints > 0) racePointsTeams[idx].push(numPoints);
+        });
+      }
     }
 
     const thresholds = arr =>
