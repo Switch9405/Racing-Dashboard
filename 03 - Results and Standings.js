@@ -65,28 +65,27 @@ async function loadDriversData() {
         const ptsT = cells[20];
         const raceResultsT = cells.slice(21, 30);
         const flT = cells[30];
-
-        const hasValidData =
-          teamName && teamName.trim() !== '' &&
-          (parseInt(ptsT) || raceResultsT.some(p => parseInt(p)) || parseInt(flT));
-
-        if (!hasValidData) continue;
-
-        teamData.push({
-          pos: posT,
-          team: teamName,
-          movement: movementT,
-          pts: ptsT,
-          raceResults: raceResultsT,
-          fl: flT
-        });
-
-        raceResultsT.forEach((points, idx) => {
-          const numPoints = parseInt(points) || 0;
-          if (numPoints > 0) racePointsTeams[idx].push(numPoints);
-        });
+      
+        // Updated validation: Only require team name
+        const hasValidData = teamName && teamName.trim() !== '';
+      
+        if (hasValidData) {
+          teamData.push({
+            pos: posT,
+            team: teamName,
+            movement: movementT,
+            pts: ptsT,
+            raceResults: raceResultsT,
+            fl: flT
+          });
+      
+          raceResultsT.forEach((points, idx) => {
+            const numPoints = parseInt(points) || 0;
+            racePointsTeams[idx].push(numPoints);
+          });
+        }
       }
-    }
+    }  // END OF FOR-LOOP - MOVED THIS BRACE UP
 
     const thresholds = arr =>
       arr.map(points => {
