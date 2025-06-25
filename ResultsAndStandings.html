@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+      <meta charset="UTF-8"/> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+      <title>MidLapCrisis - Results & Standings</title>         
+      <link rel="stylesheet" href="00 - Style.css"/>
+      <link rel="stylesheet" href="03 - Results and Standings.css"/>  
+      <link rel="preconnect" href="https://fonts.googleapis.com"/> 
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+    <div class="nav-container">
+      <nav>
+        <span class="nav-title">
+          <span class="Logo-title-main" style="color: var(--white)">MidLapCrisis</span>
+          <span class="Logo-title-sub" style="color: var(--accent); font-weight: normal">RACING LEAGUE</span>
+        </span>
+        <a href="index.html">The Pit Wall</a> 
+        <a href="RaceCalendar.html">Race Calendar</a>   
+        <a href="ResultsAndStandings.html" class="active">Results & Standings</a>      
+        <a href="TeamsAndDrivers.html">Teams & Drivers</a>
+        <a href="SportingCode.html">Sporting Code</a>
+        <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+      </nav>             
+    </div>
+
+<div class="page-container">
+  <h1>Results & Standings</h1> 
+  <h2 class="mb-h2-title">Season 1</h2>  
+  <div class="mb-grid-container">
+
+    <!-- TAB HEADERS -->
+    <div class="r_s-h1-align-row">
+      <h1 class="r_s-h1-divider-heading active" data-tab="drivers">Driver Championship</h1>
+      <h1 class="r_s-h1-divider-heading" data-tab="teams">Team Championship</h1>
+      <h1 class="r_s-h1-divider-heading" data-tab="results">Race Results</h1>
+    </div>
+
+    <!-- DRIVER TABLE -->
+    <div id="drivers-table-container" class="table-container">
+      <div id="loading-spinner-drivers" class="mb-spinner-container">
+        <div class="mb-spinner"></div>
+        <p>Loading driver standings…</p>
+      </div>
+      <table id="dc-points-table"> 
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+      </table> 
+    </div>
+
+    <!-- TEAM TABLE -->
+    <div id="team-table-container" class="table-container" style="display: none;">
+      <div id="loading-spinner-teams" class="mb-spinner-container">
+        <div class="mb-spinner"></div>
+        <p>Loading team standings…</p>
+      </div>
+      <table id="tc-points-table"> 
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+      </table> 
+    </div>
+
+    <!-- Future: RACE RESULTS TABLE -->
+    <div id="results-table-container" class="table-container" style="display: none;">
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { loadDriverData } from './03a - DriversChampionshipTable.js';
+import { loadTeamData } from './03b - TeamsChampionshipTable.js';
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadDriverData();
+  loadTeamData();
+});
+</script>
+
+<script src="03c - Race Results.js" defer></script>
+
+<script>
+// TAB SWITCHING SCRIPT
+document.querySelectorAll(".r_s-h1-divider-heading").forEach(tab => {
+  tab.addEventListener("click", () => {
+    // Remove active class from all tabs
+    document.querySelectorAll(".r_s-h1-divider-heading").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    // Hide all table containers
+    document.querySelectorAll(".table-container").forEach(container => container.style.display = "none");
+
+    const selected = tab.dataset.tab;
+    if (selected === "drivers") document.getElementById("drivers-table-container").style.display = "block";
+    else if (selected === "teams") document.getElementById("team-table-container").style.display = "block";
+    else if (selected === "results") document.getElementById("results-table-container").style.display = "block";
+  });
+});
+</script>
+
+   <!-- Footer Container -->
+  <footer class="footer">
+  	 <div class="footer-container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>The Team</h4>
+  	 			<ul>
+  	 				<li><a href="https://steamcommunity.com/profiles/76561198054944564">Switch</a></li>
+  	 				<li><a href="https://steamcommunity.com/profiles/76561198862914841">Teeds</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>FAQs</h4>
+  	 			<ul>
+  	 				<li><a href="https://store.steampowered.com/app/1097130/Circuit_Superstars/">Where do I purchase Circuit Superstars?</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSciRonlcIrKZ8TC1ulOfpK0pN8sGZpeYMGLtQPdlZ0iLCrJ4Q/viewform?usp=dialog">How do I join the league?</a></li>
+  	 				<li><a href="05 - Sporting Code.html">Does the league have rules?</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div style="margin-left: auto;" class="footer-col">
+  	 			<h4>MidLapCrisis Racing League</h4>
+  	 			<ul>
+  	 				<h3>© 2025 MidLapCrisis Racing League. All rights reserved.</h3>
+  	 			</ul>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+
+</body>
+</html>
+
+  <script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+
+  menuToggle.addEventListener('click', () => {
+    nav.classList.toggle('active');
+  });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,449 @@
+
+/* DIVIDING HEADING - DRIVER CHAMPIONSHIP, TEAMS CHAMPIONSHIP, RACE RESULTS */
+
+.r_s-h1-align-row {
+    display: flex;
+    justify-content: flex-start;
+    gap: 0;
+    align-items: center;
+}
+
+/* Required to align H1 heading matching mainbody H1, but grey */
+.r_s-h1-align-row h1 {
+    font-size: 1.875rem;
+    color: var(--grey);
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+/* Inserts dividers */
+.r_s-h1-divider-heading {
+    color: var(--grey);
+    position: relative;
+    cursor: pointer;
+    padding: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.r_s-h1-divider-heading.active {
+    color: var(--white);
+    font-weight: 700;
+}
+
+.r_s-h1-divider-heading.active::before {
+    background-color: var(--grey);
+}
+
+.r_s-h1-divider-heading:first-child {
+    padding-left: 0;
+}
+
+/* H1 Divider settings */
+.r_s-h1-divider-heading:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background-color: var(--grey);  /* Make sure separator color stays constant */
+    transition: background-color 0.3s ease;
+}
+
+/* H1 Hover colour */
+.r_s-h1-divider-heading:not(.active):hover {
+    color: var(--accent);
+}
+
+/* TABLE FORMAT - CARD COLOR */
+
+#dc-points-table,
+#tc-points-table {
+    background: var(--card);
+}
+
+#tc-points-table td.tc-final-empty {
+  background-color: var(--bg) !important;
+}
+
+/* HEIGHTS */
+
+/* TABLE LAYOUT - ROW HEIGHT - DRIVER & TEAM CHAMPIONSHIP */
+
+#dc-points-table tbody tr:not(.spacer-row) td,
+#tc-points-table tbody tr:not(.spacer-row) td {
+    height: 2rem;
+}
+
+/* HEADINGS */
+
+/* TABLE LAYOUT - HEADING COLUMNS - DRIVER & TEAM CHAMPIONSHIP */
+
+.r_s-total-points-column{
+    width: 3rem;
+    padding-right: 1.2rem;
+    text-align: right;
+}
+
+.r_s-race-points-columns{
+    width: 3rem;
+    text-align: center;
+}
+
+.r_s-fastestlap-column{
+    width: 2.5rem;
+    text-align: center;
+}
+
+/* TABLE LAYOUT - HEADING COLUMNS - DRIVER CHAMPIONSHIP */
+
+.dc-driver-column {
+    padding-left: 1rem;
+    text-align: left;
+}
+
+.dc-team-column{
+    text-align: left;
+}
+
+.dc-poleposition-column{
+    width:4rem;
+    text-align: center;
+}
+
+/* TABLE LAYOUT - HEADING COLUMNS - TEAM CHAMPIONSHIP */
+
+.tc-teams-column{
+    padding-left: 1rem;
+    text-align: left;
+}
+
+/* Drivers Placeholder */
+.tc-driver-placeholder{
+    width: 16rem;
+}
+
+.tc-empty{
+    padding-left: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* ROWS */
+
+/* TABLE LAYOUT - ROW COLUMNS - DRIVER & TEAM CHAMPIONSHIP */
+
+.r_s-rank-pos{
+    font-size: 1rem;
+    width: 4rem;
+    text-align: center;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.r_s-movement {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.75em;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.r_s-movement-column { 
+    width: 50px;
+    text-align: right;
+    padding-right: .75rem;
+    line-height: 1rem;  
+}
+
+.r_s-movement-up {
+    color: var(--positive);
+}
+
+.r_s-movement-down {
+    color: var(--negative);
+}
+
+.r_s-drivers{
+    padding-left: 1rem;
+    font-size: .875rem;
+    font-weight: 700;
+}
+
+.r_s-total-points{
+    font-size: 1rem;
+    padding-right: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+.r_s-race-points{
+    width: 50px;
+    display: inline-block;
+    height: 10px;
+    font-weight: normal;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.r_s-race-point-colored {
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
+.r_s-race-point-colored.podium-points-1 {
+    color: var(--gold);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.r_s-race-point-colored.podium-points-2 {
+    color: var(--silver);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.r_s-race-point-colored.podium-points-3 {
+    color: var(--bronze);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.r_s-fastestlap-points{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--fastestlap);
+}
+
+/* TABLE LAYOUT - ROW COLUMNS - DRIVER CHAMPIONSHIP */
+
+.dc-teams{
+    font-size: .875rem;
+    font-weight: 400;
+}
+
+.dc-poleposition-number{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* RACE RESULTS - HEADINGS */
+
+.race-block:not(:first-child) {
+    margin-top: 2rem;
+}
+
+/* SINGLE ROW COLOUR ON HOVER */
+
+/* Rank */
+#dc-points-table tbody:hover .hover-row .r_s-rank-pos,
+#tc-points-table tbody:hover .hover-row .r_s-rank-pos {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#dc-points-table tbody .hover-row:hover .r_s-rank-pos,
+#tc-points-table tbody .hover-row:hover .r_s-rank-pos {
+color: var(--white) !important;
+font-style: inherit;
+}
+
+/* Movement */
+#dc-points-table tbody:hover .hover-row .r_s-movement,
+#tc-points-table tbody:hover .hover-row .r_s-movement {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#dc-points-table .hover-row:hover .r_s-movement.r_s-movement-up {
+color: var(--positive) !important; 
+}
+#dc-points-table .hover-row:hover .r_s-movement.r_s-movement-down {
+color: var(--negative) !important;
+}
+
+#tc-points-table .hover-row:hover .r_s-movement.r_s-movement-up {
+color: var(--positive) !important;
+}
+#tc-points-table .hover-row:hover .r_s-movement.r_s-movement-down {
+color: var(--negative) !important;
+}
+
+/* Drivers */
+#dc-points-table tbody:hover .hover-row .r_s-drivers,
+#tc-points-table tbody:hover .hover-row .r_s-drivers {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#dc-points-table tbody .hover-row:hover .r_s-drivers,
+#tc-points-table tbody .hover-row:hover .r_s-drivers {
+color: var(--white) !important;
+font-style: inherit;
+}
+
+#tc-points-table .tc-empty .row-content {
+  color: var(--team-color);
+  font-weight: 700;
+}
+
+#tc-points-table tbody:hover .hover-row .tc-empty .row-content {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#tc-points-table tbody .hover-row:hover .tc-empty .row-content {
+color: var(--team-color) !important;
+font-style: inherit;
+}
+
+/* Teams */
+
+#dc-points-table .dc-teams .row-content {
+  color: var(--team-color);
+}
+
+/* All team names grey when hovering any row */
+#dc-points-table tbody:hover .hover-row .dc-teams .row-content {
+  color: var(--grey) !important;
+  font-style: light !important;
+  transition: color 1.5s ease;
+}
+
+/* The hovered row restores its original team color */
+#dc-points-table tbody .hover-row:hover .dc-teams .row-content {
+  color: var(--team-color) !important;
+  font-style: inherit;
+}
+
+/* Total Points */
+#dc-points-table tbody:hover .hover-row .r_s-total-points,
+#tc-points-table tbody:hover .hover-row .r_s-total-points {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#dc-points-table tbody .hover-row:hover .r_s-total-points,
+#tc-points-table tbody .hover-row:hover .r_s-total-points {
+color: var(--white) !important;
+font-style: inherit;
+}
+
+/* Race Points */
+#dc-points-table tbody:hover .hover-row .r_s-race-points,
+#tc-points-table tbody:hover .hover-row .r_s-race-points {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#dc-points-table tbody .hover-row:hover .r_s-race-points,
+#tc-points-table tbody .hover-row:hover .r_s-race-points {
+color: var(--white) !important;
+font-style: inherit;
+}
+
+#dc-points-table tbody:hover .hover-row .r_s-race-point-colored,
+#tc-points-table tbody:hover .hover-row .r_s-race-point-colored {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+
+#dc-points-table .hover-row:hover .r_s-race-point-colored.podium-points-1 {
+color: var(--gold) !important;
+}
+#dc-points-table .hover-row:hover .r_s-race-point-colored.podium-points-2 {
+color: var(--silver) !important;
+}
+#dc-points-table .hover-row:hover .r_s-race-point-colored.podium-points-3 {
+color: var(--bronze) !important;
+}
+
+#tc-points-table .hover-row:hover .r_s-race-point-colored.podium-points-1 {
+color: var(--gold) !important;
+}
+#tc-points-table .hover-row:hover .r_s-race-point-colored.podium-points-2 {
+color: var(--silver) !important;
+}
+#tc-points-table .hover-row:hover .r_s-race-point-colored.podium-points-3 {
+color: var(--bronze) !important;
+}
+
+/* Fastest Lap */
+#dc-points-table tbody:hover .hover-row .r_s-fastestlap-points,
+#tc-points-table tbody:hover .hover-row .r_s-fastestlap-points {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#dc-points-table tbody .hover-row:hover .r_s-fastestlap-points,
+#tc-points-table tbody .hover-row:hover .r_s-fastestlap-points {
+color: var(--fastestlap) !important;
+font-style: inherit;
+}
+
+/* Pole Position */
+#dc-points-table tbody:hover .hover-row .dc-poleposition-number {
+color: var(--grey) !important;
+font-style: light !important;
+transition: color 1.5s ease;
+}
+
+#dc-points-table tbody .hover-row:hover .dc-poleposition-number {
+color: var(--white) !important;
+font-style: inherit;
+}
+
+
+@media screen and (max-width: 840px) {
+
+#dc-points-table .hover-row .r_s-rank-pos .row-content {
+    width: 4rem;
+}
+
+#dc-points-table .hover-row .mb-divider-cell .row-content {
+    width: 12px;
+}
+
+#dc-points-table .hover-row .r_s-movement-column .row-content {
+    width: 2rem;
+}
+
+#dc-points-table .hover-row .r_s-drivers .row-content {
+    width: 10rem;
+}
+
+#dc-points-table .hover-row .dc-teams .row-content {
+    width: 8rem;
+}
+
+#dc-points-table .hover-row .r_s-total-points .row-content {
+    width: 2rem;
+}
+
+#dc-points-table .hover-row td .row-content {
+    width: 3rem;
+}
+
+#dc-points-table .hover-row .dc-poleposition-number .row-content {
+    width: 4rem;
+}
+
+
+}

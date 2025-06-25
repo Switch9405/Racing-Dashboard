@@ -1,0 +1,175 @@
+
+.rc-title {
+    font-size: 1.75rem;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-bottom: .25rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.rc-heading {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 5rem;
+  margin-top: 2rem;
+  color: var(--accent);
+}
+
+.rc-body {
+  margin-left: 10rem;
+  margin-top: 0.3rem;
+  line-height: 2;
+}
+
+.list-level-0 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 0rem;
+  margin-top: 1rem;
+  color: var(--accent);
+}
+
+.list-level-1 {
+  color: var(--text);
+  font-weight: bold;
+  margin-left: 1rem;
+  line-height: 1.6;
+}
+
+.list-level-2 {
+  color: var(--text);
+  margin-left: 4rem;
+  line-height: 1.6;
+}
+
+.list-level-3 {
+  color: var(--text);
+  font-weight: bold;
+  margin-left: 4.75rem;
+  line-height: 1.6;
+}
+
+.list-level-4 {
+  color: var(--text);
+  margin-left: 8rem;
+  line-height: 1.6;
+}
+
+  
+/* Ensure the wrapper just handles layout, not table sizing */
+.rc-table-table {
+  width: 50%;
+  margin-left: 190px;
+  padding: 20px;
+}
+
+/* The table must use fixed layout to evenly distribute columns */
+.rc-table-table table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+  border: 1px solid var(--white); /* Outer border */
+}
+
+/* Header and data cells */
+.rc-table-table th,
+.rc-table-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border: 1px solid var(--white);
+  background-color: transparent;
+  padding: 8px;
+  font-size: .85rem;
+  text-align: left;
+}
+
+/* Optional: Equal widths for all columns (if not using table-layout: fixed) */
+/* .rc-table-table th, .rc-table-table td { width: 25%; } */
+
+/* First row of table body styling */
+.rc-table-table table tbody tr:first-child td {
+  font-weight: bold;
+  text-align: center;
+  color: var(--white);
+}
+
+
+.tr-double {
+  color: var(--text);
+  font-weight: 500;
+  border-bottom: none !important;
+  border-left: none !important;
+  height: 80px;
+}
+
+/* Remove browser bullet markers for these list levels */
+ol.list-level-1,
+ol.list-level-2,
+ol.list-level-3 {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.rc-body {
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+.rc-body[data-prefixed="true"]::before {
+  content: attr(data-prefix) ".";
+  position: absolute;
+  left: -2.5rem;
+  width: 1.5rem;
+  font-weight: bold;
+  display: inline-block;
+  text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+  .rc-title {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .rc-heading,
+  .list-level-0 {
+    margin-left: 0;
+    font-size: 1.1rem;
+  }
+
+  .rc-body,
+  .list-level-1,
+  .list-level-2,
+  .list-level-3,
+  .list-level-4 {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .rc-table-table {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .rc-table-table th,
+  .rc-table-table td {
+    font-size: 0.75rem;
+    padding: 6px;
+  }
+
+  .rc-signature {
+    margin-left: 0;
+    text-align: right;
+  }
+}
+
+
+.rc-signature {
+  margin-top: 20px;
+  margin-left: 65%;
+}
