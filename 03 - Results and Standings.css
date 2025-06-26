@@ -409,6 +409,10 @@ color: var(--white) !important;
 font-style: inherit;
 }
 
+#results-table-container {
+    width:75%;
+}
+
 
 @media screen and (max-width: 840px) {
 
@@ -495,6 +499,37 @@ font-style: inherit;
 
 #tc-points-table .hover-row .tc-empty .row-content {
     width: 10rem;
+}
+
+#results-table-container {
+    width: 100%;
+}
+
+#results-table-container .race-block h2 {
+    font-size: 0.875em;
+}
+
+#results-table-container thead th {
+    font-size: 0.75em;
+}
+
+
+#results-table-container thead th:nth-child(n+7) {
+    display: none;
+}
+
+#results-table-container tbody td {
+    font-size: 0.75em;
+    width: 50%
+}
+
+#results-table-container tbody td:nth-child(2) {
+    font-size: 0.75em;
+    width: 15rem;
+}
+
+#results-table-container tbody td:nth-child(n+7) {
+    display: none;
 }
 
 }
