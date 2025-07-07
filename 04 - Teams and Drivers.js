@@ -27,12 +27,12 @@ async function loadTeamData() {
   // Parse Table 2 - Driver Stats
   for (let i = table2StartIndex + 1; i < rows.length; i++) {
     const cells = rows[i];
-    if (!cells[13]) continue; // driver column
+    if (!cells[15]) continue; // driver column
 
-    const driver = cells[13]?.trim();
-    const pos = cells[15]?.trim();
-    const points = cells[16]?.trim();
-    const wins = cells[18]?.trim();
+    const driver = cells[15]?.trim();
+    const pos = cells[17]?.trim();
+    const points = cells[18]?.trim();
+    const wins = cells[20]?.trim();
 
     driversData.set(driver.toLowerCase(), {
       pos: pos || "-",
