@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head> 
+  <meta charset="UTF-8"/> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+  <title>MidLapCrisis - The Pit Wall</title> 
+  <link rel="stylesheet" href="00 - Style.css"/>
+  <link rel="stylesheet" href="01 - The Pit Wall.css"/> 
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700;900&display=swap" rel="stylesheet"> 
+</head> 
+<body class="content"> 
+  <div class="nav-container">
+    <nav>
+      <a href="index.html" class="nav-title">
+        <span class="Logo-title-main" style="color: var(--white)">MidLapCrisis</span>
+        <span class="Logo-title-sub" style="color: var(--accent); font-weight: normal">RACING LEAGUE</span>
+      </a>
+      <a href="index.html" class="active">The Pit Wall</a> 
+      <a href="RaceCalendar.html">Race Calendar</a> 
+      <a href="ResultsAndStandings.html">Results & Standings</a> 
+      <a href="Teams.html">Teams</a>
+      <a href="Drivers.html">Drivers</a>
+      <a href="SportingCode.html">Sporting Code</a>
+      <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+    </nav> 
+  </div> 
+
+  <div class="page-container">
+    <h1>The Pit Wall</h1>
+    <div class="mb-h2-title">Season 1</div>
+    <div id="pw-page-grid" class="mb-grid-container pw-grid">
+      <div id="team-standings" class="table-container">
+        <div id="loading-spinner-standings-teams" class="mb-spinner-container">
+            <div class="mb-spinner"></div>
+            <p>Loading team standings…</p>
+        </div>
+        <h1 class="mb-subheader ">Team Standings</h1>
+        <table id="pw-team-standings">
+            <thead>
+              <tr class="mb-tableheading-height">
+                <th>Rank</th>
+                <th></th>
+                <th class="pw-drivers-names-column">Team</th>
+                <th class="pw-total-points-column">Pts.</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+      </div>
+      <div id="driver-standings" class="table-container">
+        <div id="loading-spinner-standings-drivers" class="mb-spinner-container">
+            <div class="mb-spinner"></div>
+            <p>Loading driver standings…</p>
+        </div>
+        <h1 class="mb-subheader">Driver Standings</h1>
+        <table id="pw-driver-standings">
+            <thead>
+              <tr class="mb-tableheading-height">
+                <th>Rank</th>
+                <th></th>
+                <th class="pw-drivers-names-column">Driver</th>
+                <th class="pw-total-points-column">Pts.</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+      </div>
+      <div id="timer" class="table-container">
+        <h1 class="mb-subheader pw-subheader-upcoming">Upcoming Event</h1>
+        <div id="upcoming-event-widget">
+            <div></div>
+            <div class="event-container">
+              <div class="countdown-boxes">
+                <div><div class="count-box" id="days">--</div><div class="label">Days</div></div>
+                <div><div class="count-box" id="hours">--</div><div class="label">Hours</div></div>
+                <div><div class="count-box" id="minutes">--</div><div class="label">Minutes</div></div>
+              </div>
+              <div class="event-info">
+                <div><strong>Location:</strong> <span id="event-location">Loading...</span></div>
+                <div><strong>Date:</strong> <span id="event-date">Loading...</span></div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>The Team</h4>
+            <ul>
+              <li><a href="https://steamcommunity.com/profiles/76561198054944564">Switch</a></li>
+              <li><a href="https://steamcommunity.com/profiles/76561198862914841">Teeds</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>FAQs</h4>
+            <ul>
+              <li><a href="https://store.steampowered.com/app/1097130/Circuit_Superstars/">Where do I purchase Circuit Superstars?</a></li>
+              <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSciRonlcIrKZ8TC1ulOfpK0pN8sGZpeYMGLtQPdlZ0iLCrJ4Q/viewform?usp=dialog">How do I join the league?</a></li>
+              <li><a href="05 - Sporting Code.html">Does the league have rules?</a></li>
+            </ul>
+        </div>
+        <div style="margin-left: auto;" class="footer-col">
+            <h4>MidLapCrisis Racing League</h4>
+            <ul>
+              <h3>© 2025 MidLapCrisis Racing League. All rights reserved.</h3>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+  </script>
+  <script src="01a - TeamsChampionshipStandings.js"></script>
+  <script src="01b - DriversChampionshipStandings.js"></script>
+  <script src="01c - RaceTimer.js"></script>
+</body>
+</html>
+
