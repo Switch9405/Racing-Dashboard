@@ -156,7 +156,6 @@ async function loadDriverStats() {
           HighestGridPosition: `${toOrdinal(cols[27])} ( x${cols[28]} )`,
           PolePositions: cols[29],
           DriverChampionships: cols[30],
-          TeamChampionships: cols[31]
         };
 
         renderDriverStats(driverName, seasonStats, sprintStats, multiclassStats, featureStats, careerStats);
