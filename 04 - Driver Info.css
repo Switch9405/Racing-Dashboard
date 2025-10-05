@@ -1,0 +1,447 @@
+.mb-subheader.all-drivers-heading{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.mb-subheader.all-teams-heading{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.stats-subheader{
+  font-size: 3rem;
+}
+
+/* Parent container holding all stats */
+.stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+/* Left stats section (season/sprint/etc.) */
+.stats-columns {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stat-block h3{
+    font-size: 2.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.season-stats,
+.sprint-stats,
+.multiclass-stats,
+.feature-stats{
+    font-size: 1.875rem;
+    border-bottom: 1px solid var(--grey);
+    padding-bottom: 2rem;
+}
+
+/* Right career stats column */
+.career-column {
+  flex: 0 0 50%; /* takes up 50% of the width */
+  background: var(--card);
+  color: var(--white);
+  padding: 3rem;
+  border-radius: 1rem;
+  min-width: 300px;
+}
+
+/* 2-column grid for general stats */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 1.5rem;
+}
+
+/* 1-column grid for career stats only */
+.career-column .stat-grid {
+  grid-template-columns: 1fr; /* Override to single column */
+}
+
+.stat-row {
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--grey);
+  font-weight: normal;
+}
+
+.stat-value {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.career-column .stat-value {
+  margin-top: 0;
+}
+
+.career-column .stat-grid {
+  grid-template-columns: 1fr; /* already in your code */
+  gap: 2rem; /* override the 3rem gap from global .stat-grid */
+  margin-top: 2rem;
+}
+
+
+.career-column .stat-row {
+  display: flex;
+  flex-direction: row; /* horizontal layout */
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+  padding-bottom: 2rem;
+}
+
+.career-column .stat-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.team-header-card {
+  border-radius: 1rem;
+  color: #fff;
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3rem;
+
+}
+
+.team-header-card h2 {
+  font-size: 3.75rem;
+  font-weight: 900;
+  padding-top: 1.5rem;
+  text-transform: uppercase;
+}
+
+.team-driver-lineup {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.team-driver-lineup span {
+  position: relative;
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+
+/* Add vertical line between driver names */
+.team-driver-lineup span:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -0.5rem;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: var(--white);
+}
+
+.team-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.team-title-wrapper h2 {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  padding: 0 2rem;
+}
+
+
+.team-name-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem; /* 2rem space between h2 and lines */
+  width: 100%;
+}
+
+.team-name-lines h2 {
+  margin: 0;
+  font-size: 3.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.line-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex: 1;
+}
+
+.line {
+  width: 100%;
+}
+
+.top-line {
+  height: 1.5rem;
+}
+
+.bottom-line {
+  height: .75rem;
+}
+
+.driver-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 blocks across */
+  gap: 1rem; 
+  margin-bottom: .5rem;
+}
+
+.team-block {
+  margin-top: 2rem;
+  padding: .5rem;
+  }
+
+.team-name-row {
+  display: flex;
+  justify-content: space-between; /* push name left, car right */
+  align-items: center;
+}
+
+.team-name-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.team-logo {
+  height: 8rem;
+  margin-left: 0.5rem;
+  width: auto;
+}
+
+.team-name-right img.team-image {
+  max-height: 7rem; /* keep car image proportional */
+  width: auto;
+  padding: 1rem;
+  margin-right: 1rem;
+  transform: scaleX(-1);
+}
+
+.driver-block {
+  position: relative;  /* anchor for absolute images */
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex: 1 1 50%;
+  padding: 1.5rem;    /* keep padding for text column */
+  text-align: left;
+  cursor: pointer;
+  background: var(--card);
+}
+
+.driver-info-left {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;  /* adjust as needed */
+}
+
+.driver-image-right {
+  position: absolute;  /* remove it from padding flow */
+  bottom: 0;           /* flush with true bottom of block */
+  right: 1.5rem;       /* adjust horizontal position inside block */
+  height: 160px;       /* keep scaled height */
+  transform: translateX(-25%);
+  overflow: visible;
+  display: block;
+}
+
+/* stacking container (optional — driver-image-right is already positioned) */
+.image-stack {
+  position: relative;
+  display: inline-block; /* ensures container matches suit size */
+}
+
+/* Put the suit IN FLOW so the container sizes to it */
+.image-stack .team-suit {
+  display: block;   /* in-flow block: defines the size of .image-stack */
+  z-index: 1;
+  max-height: 160px;
+  /* IMPORTANT: do NOT set width/height/max-width/max-height/object-fit here */
+}
+
+/* Absolutely overlay the helmet at the exact same top-left origin */
+.image-stack .driver-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  pointer-events: none; /* optional so clicks fall through */
+  max-height: 160px;
+}
+
+.driver-info-left {
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;  /* adjust as needed */
+}
+
+.header-image-right {
+  position: absolute;  /* remove it from padding flow */
+  bottom: 0;           /* flush with true bottom of block */
+  right: 1.5rem;       /* adjust horizontal position inside block */
+  height: 400px;       /* keep scaled height */
+  transform: translateX(-150%);
+  overflow: visible;
+  display: block;
+}
+
+/* stacking container (optional — driver-image-right is already positioned) */
+.header-image-stack {
+  position: relative;
+  display: inline-block; /* ensures container matches suit size */
+}
+
+/* Put the suit IN FLOW so the container sizes to it */
+.header-image-stack .team-suit {
+  display: block;   /* in-flow block: defines the size of .image-stack */
+  z-index: 1;
+  max-height: 400px;
+  /* IMPORTANT: do NOT set width/height/max-width/max-height/object-fit here */
+}
+
+/* Absolutely overlay the helmet at the exact same top-left origin */
+.header-image-stack .driver-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block;
+  pointer-events: none; /* optional so clicks fall through */
+  max-height: 400px;
+}
+
+
+ .driver-info-left .driver-first-name{
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+ .driver-info-left .driver-last-name{
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+ .driver-info-left .driver-team{
+  font-size: 1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+ .driver-info-left .driver-number{
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+
+#driver-header .driver-block {
+  border-radius: 16px;
+  color: #fff;
+  width: 100%;
+  height: 30rem;
+  margin-bottom: 3rem;
+  margin-top: .75rem;
+
+}
+
+#driver-header .driver-info-left {
+  padding-left: 20rem;
+  text-align: center;
+  justify-content: center;
+}
+
+#driver-header .driver-info-left .driver-first-name {
+  font-size: 4.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+#driver-header .driver-info-left .driver-last-name {
+font-size: 4.5rem;
+margin-top: -1rem;
+font-weight: 900;
+text-transform: uppercase;
+}
+
+#driver-header .driver-info-left .driver-team{
+  font-size: 2.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+#driver-header .driver-info-left .driver-number{
+  font-size: 3.75rem;
+  font-weight: 900;
+  
+}
+
+#driver-header .driver-image {
+  height: 425px;
+  width: auto;
+  padding-right: 22rem;
+  margin-bottom: -2rem;
+}
+
+
+#all-teams {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 blocks across */
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+#all-teams .team-header-card  {
+
+  height: 20rem;
+  margin: 0;
+}
+
+#all-teams .team-header-card h2  {
+  font-size: 3rem;
+}
+
+#all-teams .team-header-card .team-image {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+#retired-drivers {
+  margin-top: 2rem;
+}
+
+#retired-drivers .driver-block {
+  background-color: var(--grey);
+}
